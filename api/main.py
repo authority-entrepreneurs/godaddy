@@ -17,16 +17,11 @@ prod_base_url = 'https://api.godaddy.com/'
 @app.route('/webhook/godaddy/', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        data = request.json
-        try:
-            sub_domain_name = data.get('sub_domain_name', None)
-        except Exception:
+        sub_domain_name = request.args.get('sub_domain_name', None)
+        if sub_domain_name is None:
             return "Sub domain name is not present"
-        try:
-            domain_name = data.get('domain_name', None)
-        except Exception:
-            return "Domain name is not present"
-        port = data.get('port', 443)
+        domain_name = 'dineline.co'
+        port = 443
 
         data_format = [
                 {
