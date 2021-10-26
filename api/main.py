@@ -1,4 +1,5 @@
 import json
+import re
 
 import requests
 from flask import Flask, abort, request
@@ -13,6 +14,8 @@ auth_key = 'sso-key'+' '+key+':'+secret
 test_base_url = 'https://api.ote-godaddy.com/'
 prod_base_url = 'https://api.godaddy.com/'
 
+regex = re.compile('[!#$%^&*()<>?/\|}{~:]')
+
 
 @app.route('/webhook/godaddy/', methods=['POST'])
 def webhook():
@@ -20,6 +23,8 @@ def webhook():
         sub_domain_name = request.args.get('sub_domain_name', None)
         if sub_domain_name is None:
             return "Sub domain name is not present"
+        if not regex.search(sub_domain_name) == None:
+            return "Only Special Character -, _, @ allowed"
         domain_name = 'dineline.co'
         port = 443
 
