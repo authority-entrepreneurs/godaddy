@@ -6,8 +6,8 @@ from flask.json import jsonify
 
 app = Flask(__name__)
 
-secret = 'UeAJvdmQLoaHbzcdNvaA5K'
-key = '3mM44Ubh7y4Mp5_HKWwFDHC9AGMqZVxBDiAEy'
+secret = 'Jiwg84i5YngV4ujqeq99bh'
+key = '9u51FqnVxbH_MsLGytZiRf7jSygtWvddnW'
 
 auth_key = 'sso-key'+' '+key+':'+secret
 test_base_url = 'https://api.ote-godaddy.com/'
@@ -36,7 +36,7 @@ def webhook():
                     "weight": 0 # no need
                 }
             ]
-        url = 'https://api.ote-godaddy.com/v1/domains/{domain}/records'.format(domain=domain_name)
+        url = 'https://api.godaddy.com/v1/domains/{domain}/records'.format(domain=domain_name)
         headers = {"Authorization":auth_key}
         response = requests.patch(
             url, json=data_format, headers=headers
@@ -52,7 +52,3 @@ def webhook():
             }
     else:
         abort(400)
-        
-
-
-
