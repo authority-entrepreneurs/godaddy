@@ -43,7 +43,7 @@ def webhook():
         )
         if response.status_code == 200:
             return {
-                "msg":"sub domain name {0} on port {1} added for domain {2}".format(sub_domain_name, domain_name, port)
+                "msg":"sub domain name {0} on port {1} added for domain {2}".format(sub_domain_name, port, domain_name)
             }
         else:
             return {
