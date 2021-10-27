@@ -14,7 +14,7 @@ auth_key = 'sso-key'+' '+key+':'+secret
 test_base_url = 'https://api.ote-godaddy.com/'
 prod_base_url = 'https://api.godaddy.com/'
 
-regex = re.compile('[!#$%^&*()<>?/\|}{~:]')
+regex = re.compile('@[!#$%^&*()<>?/\|}{~:]')
 
 
 @app.route('/webhook/godaddy/', methods=['POST'])
